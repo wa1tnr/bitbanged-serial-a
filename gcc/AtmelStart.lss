@@ -3,39 +3,39 @@ AtmelStart.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000514  00004000  00004000  00004000  2**2
+  0 .text         000005dc  00004000  00004000  00004000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .relocate     00000004  20000000  00004514  00010000  2**2
+  1 .relocate     00000004  20000000  000045dc  00010000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   2 .bkupram      00000000  47000000  47000000  00010004  2**0
                   CONTENTS
   3 .qspi         00000000  04000000  04000000  00010004  2**0
                   CONTENTS
-  4 .bss          0000002c  20000004  00004518  00010004  2**2
+  4 .bss          0000002c  20000004  000045e0  00010004  2**2
                   ALLOC
-  5 .stack        0000c000  20000030  00004544  00010004  2**0
+  5 .stack        0000c000  20000030  0000460c  00010004  2**0
                   ALLOC
   6 .ARM.attributes 0000002e  00000000  00000000  00010004  2**0
                   CONTENTS, READONLY
   7 .comment      0000007f  00000000  00000000  00010032  2**0
                   CONTENTS, READONLY
-  8 .debug_info   00002b4b  00000000  00000000  000100b1  2**0
+  8 .debug_info   00004d76  00000000  00000000  000100b1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_abbrev 00000942  00000000  00000000  00012bfc  2**0
+  9 .debug_abbrev 00000a03  00000000  00000000  00014e27  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_aranges 00000120  00000000  00000000  0001353e  2**0
+ 10 .debug_aranges 00000128  00000000  00000000  0001582a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000178  00000000  00000000  0001365e  2**0
+ 11 .debug_ranges 00000180  00000000  00000000  00015952  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_macro  00001cfe  00000000  00000000  000137d6  2**0
+ 12 .debug_macro  00001d09  00000000  00000000  00015ad2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   00002a91  00000000  00000000  000154d4  2**0
+ 13 .debug_line   00002b03  00000000  00000000  000177db  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    000db776  00000000  00000000  00017f65  2**0
+ 14 .debug_str    000dc109  00000000  00000000  0001a2de  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_frame  00000260  00000000  00000000  000f36dc  2**2
+ 15 .debug_frame  00000270  00000000  00000000  000f63e8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_loc    000004f0  00000000  00000000  000f393c  2**0
+ 16 .debug_loc    000004f0  00000000  00000000  000f6658  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -94,7 +94,7 @@ Disassembly of section .text:
     427a:	bd10      	pop	{r4, pc}
     427c:	20000004 	.word	0x20000004
     4280:	00000000 	.word	0x00000000
-    4284:	00004514 	.word	0x00004514
+    4284:	000045dc 	.word	0x000045dc
 
 00004288 <frame_dummy>:
     4288:	b508      	push	{r3, lr}
@@ -106,7 +106,7 @@ Disassembly of section .text:
     4296:	bd08      	pop	{r3, pc}
     4298:	00000000 	.word	0x00000000
     429c:	20000008 	.word	0x20000008
-    42a0:	00004514 	.word	0x00004514
+    42a0:	000045dc 	.word	0x000045dc
 
 000042a4 <SystemInit>:
  *         Initialize the System and update the SystemCoreClock variable.
@@ -247,19 +247,19 @@ __attribute__((always_inline)) __STATIC_INLINE void __DSB(void)
 		*pDest++ = 0;
     433e:	f843 1b04 	str.w	r1, [r3], #4
     4342:	e7e1      	b.n	4308 <Reset_Handler+0x18>
-    4344:	00004514 	.word	0x00004514
+    4344:	000045dc 	.word	0x000045dc
     4348:	20000000 	.word	0x20000000
     434c:	20000004 	.word	0x20000004
     4350:	20000004 	.word	0x20000004
     4354:	20000030 	.word	0x20000030
     4358:	00004000 	.word	0x00004000
     435c:	e000ed00 	.word	0xe000ed00
-    4360:	000044ad 	.word	0x000044ad
-    4364:	00004425 	.word	0x00004425
+    4360:	00004575 	.word	0x00004575
+    4364:	000044e5 	.word	0x000044e5
 
 00004368 <uSec>:
-#include "atmel_start.h"
 #include "gpio_local.h"
+#include "usuart.h"
 
 /* Many changes: by wa1tnr, July 2018 */
 
@@ -317,8 +317,8 @@ void raise_LED_pins(void) { // multiple target boards
     raise_D13_feather(); // Feather M4 Express
     43a4:	4718      	bx	r3
     43a6:	bf00      	nop
-    43a8:	0000446d 	.word	0x0000446d
-    43ac:	0000447d 	.word	0x0000447d
+    43a8:	00004535 	.word	0x00004535
+    43ac:	00004545 	.word	0x00004545
 
 000043b0 <lower_LED_pins>:
 
@@ -335,8 +335,8 @@ void lower_LED_pins(void) {
     lower_D13_feather();
     43bc:	4718      	bx	r3
     43be:	bf00      	nop
-    43c0:	0000448d 	.word	0x0000448d
-    43c4:	0000449d 	.word	0x0000449d
+    43c0:	00004555 	.word	0x00004555
+    43c4:	00004565 	.word	0x00004565
 
 000043c8 <blink_LED>:
 
@@ -365,221 +365,330 @@ void blink_LED(void) {
     43e4:	00004381 	.word	0x00004381
     43e8:	000043b1 	.word	0x000043b1
 
-000043ec <blinkLEDfast>:
-    short_timer();
-    lower_LED_pins(); // lower_D13(); lower_D12();
-    short_timer();
-}
+000043ec <clock_init>:
+// clock clock who's there ///////////////////
 
-void blinkLEDfast(void) {
-    43ec:	b538      	push	{r3, r4, r5, lr}
-    for(int i = 15; i > 0; i--) {
-        blink_LED();
-    43ee:	4d03      	ldr	r5, [pc, #12]	; (43fc <blinkLEDfast+0x10>)
-void blinkLEDfast(void) {
-    43f0:	240f      	movs	r4, #15
-        blink_LED();
-    43f2:	47a8      	blx	r5
-    for(int i = 15; i > 0; i--) {
-    43f4:	3c01      	subs	r4, #1
-    43f6:	d1fc      	bne.n	43f2 <blinkLEDfast+0x6>
-    }
-}
-    43f8:	bd38      	pop	{r3, r4, r5, pc}
-    43fa:	bf00      	nop
-    43fc:	000043c9 	.word	0x000043c9
+#undef JAKES_CLOCK
+#ifndef JAKES_CLOCK
+void clock_init(void){ // Jake Read
+    NVMCTRL->CTRLA.reg |= NVMCTRL_CTRLA_RWS(0);
+    43ec:	4a30      	ldr	r2, [pc, #192]	; (44b0 <clock_init+0xc4>)
+    43ee:	8813      	ldrh	r3, [r2, #0]
+    43f0:	b29b      	uxth	r3, r3
+    43f2:	8013      	strh	r3, [r2, #0]
+    GCLK->CTRLA.bit.SWRST = 1;
+    43f4:	4b2f      	ldr	r3, [pc, #188]	; (44b4 <clock_init+0xc8>)
+    43f6:	781a      	ldrb	r2, [r3, #0]
+    43f8:	f042 0201 	orr.w	r2, r2, #1
+    43fc:	701a      	strb	r2, [r3, #0]
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_SWRST);
+    43fe:	685a      	ldr	r2, [r3, #4]
+    4400:	07d0      	lsls	r0, r2, #31
+    4402:	d4fc      	bmi.n	43fe <clock_init+0x12>
+    GCLK->GENCTRL[3].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_OSCULP32K) | GCLK_GENCTRL_GENEN;
+    4404:	f44f 7282 	mov.w	r2, #260	; 0x104
+    4408:	62da      	str	r2, [r3, #44]	; 0x2c
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_GENCTRL3);
+    440a:	685a      	ldr	r2, [r3, #4]
+    440c:	0691      	lsls	r1, r2, #26
+    440e:	d4fc      	bmi.n	440a <clock_init+0x1e>
+    GCLK->GENCTRL[0].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_OSCULP32K) | GCLK_GENCTRL_GENEN;
+    4410:	f44f 7282 	mov.w	r2, #260	; 0x104
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_GENCTRL0);
+    4414:	4927      	ldr	r1, [pc, #156]	; (44b4 <clock_init+0xc8>)
+    GCLK->GENCTRL[0].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_OSCULP32K) | GCLK_GENCTRL_GENEN;
+    4416:	621a      	str	r2, [r3, #32]
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_GENCTRL0);
+    4418:	684a      	ldr	r2, [r1, #4]
+    441a:	f012 0204 	ands.w	r2, r2, #4
+    441e:	d1fb      	bne.n	4418 <clock_init+0x2c>
 
-00004400 <nmain>:
+    OSCCTRL->DFLLCTRLA.reg = 0;
+    4420:	4b25      	ldr	r3, [pc, #148]	; (44b8 <clock_init+0xcc>)
+    4422:	771a      	strb	r2, [r3, #28]
+    OSCCTRL->DFLLMUL.reg = OSCCTRL_DFLLMUL_CSTEP(0x1) | OSCCTRL_DFLLMUL_FSTEP(0x1) | OSCCTRL_DFLLMUL_MUL(0);
+    4424:	4a25      	ldr	r2, [pc, #148]	; (44bc <clock_init+0xd0>)
+    4426:	629a      	str	r2, [r3, #40]	; 0x28
+    while(OSCCTRL->DFLLSYNC.reg & OSCCTRL_DFLLSYNC_DFLLMUL);
+    4428:	f893 202c 	ldrb.w	r2, [r3, #44]	; 0x2c
+    442c:	f012 0210 	ands.w	r2, r2, #16
+    4430:	d1fa      	bne.n	4428 <clock_init+0x3c>
+    OSCCTRL->DFLLCTRLB.reg = 0;
+    4432:	f883 2020 	strb.w	r2, [r3, #32]
+    while(OSCCTRL->DFLLSYNC.reg & OSCCTRL_DFLLSYNC_DFLLCTRLB);
+    4436:	4b20      	ldr	r3, [pc, #128]	; (44b8 <clock_init+0xcc>)
+    4438:	4619      	mov	r1, r3
+    443a:	f893 202c 	ldrb.w	r2, [r3, #44]	; 0x2c
+    443e:	0752      	lsls	r2, r2, #29
+    4440:	d4fb      	bmi.n	443a <clock_init+0x4e>
+    OSCCTRL->DFLLCTRLA.reg |= OSCCTRL_DFLLCTRLA_ENABLE;
+    4442:	7f1a      	ldrb	r2, [r3, #28]
+    4444:	f042 0202 	orr.w	r2, r2, #2
+    4448:	771a      	strb	r2, [r3, #28]
+    while(OSCCTRL->DFLLSYNC.reg & OSCCTRL_DFLLSYNC_ENABLE);
+    444a:	f891 302c 	ldrb.w	r3, [r1, #44]	; 0x2c
+    444e:	079b      	lsls	r3, r3, #30
+    4450:	d4fb      	bmi.n	444a <clock_init+0x5e>
+    OSCCTRL->DFLLCTRLB.reg = OSCCTRL_DFLLCTRLB_WAITLOCK | OSCCTRL_DFLLCTRLB_CCDIS | OSCCTRL_DFLLCTRLB_USBCRM;
+    4452:	2398      	movs	r3, #152	; 0x98
+    while(!OSCCTRL->STATUS.bit.DFLLRDY);
+    4454:	4a18      	ldr	r2, [pc, #96]	; (44b8 <clock_init+0xcc>)
+    OSCCTRL->DFLLCTRLB.reg = OSCCTRL_DFLLCTRLB_WAITLOCK | OSCCTRL_DFLLCTRLB_CCDIS | OSCCTRL_DFLLCTRLB_USBCRM;
+    4456:	f881 3020 	strb.w	r3, [r1, #32]
+    while(!OSCCTRL->STATUS.bit.DFLLRDY);
+    445a:	6913      	ldr	r3, [r2, #16]
+    445c:	05d8      	lsls	r0, r3, #23
+    445e:	d5fc      	bpl.n	445a <clock_init+0x6e>
+
+    GCLK->GENCTRL[5].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_DFLL_Val) | GCLK_GENCTRL_GENEN | GCLK_GENCTRL_DIV(24u);
+    4460:	4b14      	ldr	r3, [pc, #80]	; (44b4 <clock_init+0xc8>)
+    4462:	4a17      	ldr	r2, [pc, #92]	; (44c0 <clock_init+0xd4>)
+    4464:	635a      	str	r2, [r3, #52]	; 0x34
+    while(GCLK->SYNCBUSY.bit.GENCTRL5);
+    4466:	685a      	ldr	r2, [r3, #4]
+    4468:	0611      	lsls	r1, r2, #24
+    446a:	d4fc      	bmi.n	4466 <clock_init+0x7a>
+
+    GCLK->PCHCTRL[OSCCTRL_GCLK_ID_FDPLL0].reg = (1 << GCLK_PCHCTRL_CHEN_Pos) | GCLK_PCHCTRL_GEN(GCLK_PCHCTRL_GEN_GCLK5_Val);
+    446c:	2245      	movs	r2, #69	; 0x45
+    446e:	f8c3 2084 	str.w	r2, [r3, #132]	; 0x84
+    OSCCTRL->Dpll[0].DPLLRATIO.reg = OSCCTRL_DPLLRATIO_LDRFRAC(0x00) | OSCCTRL_DPLLRATIO_LDR(59);
+    4472:	4b11      	ldr	r3, [pc, #68]	; (44b8 <clock_init+0xcc>)
+    4474:	223b      	movs	r2, #59	; 0x3b
+    4476:	635a      	str	r2, [r3, #52]	; 0x34
+    while(OSCCTRL->Dpll[0].DPLLSYNCBUSY.bit.DPLLRATIO);
+    4478:	6bda      	ldr	r2, [r3, #60]	; 0x3c
+    447a:	0752      	lsls	r2, r2, #29
+    447c:	d4fc      	bmi.n	4478 <clock_init+0x8c>
+    OSCCTRL->Dpll[0].DPLLCTRLB.reg = OSCCTRL_DPLLCTRLB_REFCLK_GCLK | OSCCTRL_DPLLCTRLB_LBYPASS;
+    447e:	f44f 6200 	mov.w	r2, #2048	; 0x800
+    4482:	639a      	str	r2, [r3, #56]	; 0x38
+    OSCCTRL->Dpll[0].DPLLCTRLA.reg = OSCCTRL_DPLLCTRLA_ENABLE;
+    4484:	2202      	movs	r2, #2
+    4486:	f883 2030 	strb.w	r2, [r3, #48]	; 0x30
+    while(OSCCTRL->Dpll[0].DPLLSTATUS.bit.CLKRDY == 0 || OSCCTRL->Dpll[0].DPLLSTATUS.bit.LOCK == 0);
+    448a:	4b0b      	ldr	r3, [pc, #44]	; (44b8 <clock_init+0xcc>)
+    448c:	6c1a      	ldr	r2, [r3, #64]	; 0x40
+    448e:	0790      	lsls	r0, r2, #30
+    4490:	d5fc      	bpl.n	448c <clock_init+0xa0>
+    4492:	6c1a      	ldr	r2, [r3, #64]	; 0x40
+    4494:	07d1      	lsls	r1, r2, #31
+    4496:	d5f9      	bpl.n	448c <clock_init+0xa0>
+
+    GCLK->GENCTRL[0].reg = GCLK_GENCTRL_SRC(GCLK_GENCTRL_SRC_DPLL0) | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN;
+    4498:	4b06      	ldr	r3, [pc, #24]	; (44b4 <clock_init+0xc8>)
+    449a:	f240 3207 	movw	r2, #775	; 0x307
+    449e:	621a      	str	r2, [r3, #32]
+    while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_GENCTRL0);
+    44a0:	685a      	ldr	r2, [r3, #4]
+    44a2:	0752      	lsls	r2, r2, #29
+    44a4:	d4fc      	bmi.n	44a0 <clock_init+0xb4>
 
     MCLK->CPUDIV.reg = MCLK_CPUDIV_DIV_DIV1;
+    44a6:	4b07      	ldr	r3, [pc, #28]	; (44c4 <clock_init+0xd8>)
+    44a8:	2201      	movs	r2, #1
+    44aa:	715a      	strb	r2, [r3, #5]
 }
+    44ac:	4770      	bx	lr
+    44ae:	bf00      	nop
+    44b0:	41004000 	.word	0x41004000
+    44b4:	40001c00 	.word	0x40001c00
+    44b8:	40001000 	.word	0x40001000
+    44bc:	04010000 	.word	0x04010000
+    44c0:	00180106 	.word	0x00180106
+    44c4:	40000800 	.word	0x40000800
+
+000044c8 <nmain>:
 #endif // #ifdef JAKES_CLOCK
 
 void nmain(void) {
-    4400:	b508      	push	{r3, lr}
+    44c8:	b508      	push	{r3, lr}
         raise_LED_pins(); // raise_D13(); raise_D12();
-    4402:	4b04      	ldr	r3, [pc, #16]	; (4414 <nmain+0x14>)
-        activity_LED_demo();
+    44ca:	4b03      	ldr	r3, [pc, #12]	; (44d8 <nmain+0x10>)
+        // activity_LED_demo();
 	while (1) {
             flicker_LED();
-    4404:	4d04      	ldr	r5, [pc, #16]	; (4418 <nmain+0x18>)
-            short_timer();
-    4406:	4c05      	ldr	r4, [pc, #20]	; (441c <nmain+0x1c>)
-        raise_LED_pins(); // raise_D13(); raise_D12();
-    4408:	4798      	blx	r3
-    blinkLEDfast();
-    440a:	4b05      	ldr	r3, [pc, #20]	; (4420 <nmain+0x20>)
-    440c:	4798      	blx	r3
-            flicker_LED();
-    440e:	47a8      	blx	r5
-            short_timer();
-    4410:	47a0      	blx	r4
-    4412:	e7fc      	b.n	440e <nmain+0xe>
-    4414:	00004399 	.word	0x00004399
-    4418:	000043c9 	.word	0x000043c9
-    441c:	00004381 	.word	0x00004381
-    4420:	000043ed 	.word	0x000043ed
+    44cc:	4d03      	ldr	r5, [pc, #12]	; (44dc <nmain+0x14>)
+            // short_timer();
 
-00004424 <main>:
+            // this demo stops everything:
+            // USUART_5_demo(); // let's see what the cat drug in
+            short_timer();
+    44ce:	4c04      	ldr	r4, [pc, #16]	; (44e0 <nmain+0x18>)
+        raise_LED_pins(); // raise_D13(); raise_D12();
+    44d0:	4798      	blx	r3
+            flicker_LED();
+    44d2:	47a8      	blx	r5
+            short_timer();
+    44d4:	47a0      	blx	r4
+    44d6:	e7fc      	b.n	44d2 <nmain+0xa>
+    44d8:	00004399 	.word	0x00004399
+    44dc:	000043c9 	.word	0x000043c9
+    44e0:	00004381 	.word	0x00004381
+
+000044e4 <main>:
 	}
 }
 
 int main(void) {
-    4424:	b508      	push	{r3, lr}
+    44e4:	b508      	push	{r3, lr}
     SystemInit();
-    4426:	4b03      	ldr	r3, [pc, #12]	; (4434 <main+0x10>)
-    4428:	4798      	blx	r3
-    // clock_init();
+    44e6:	4b04      	ldr	r3, [pc, #16]	; (44f8 <main+0x14>)
+    44e8:	4798      	blx	r3
+    clock_init();
+    44ea:	4b04      	ldr	r3, [pc, #16]	; (44fc <main+0x18>)
+    44ec:	4798      	blx	r3
     init_act_LED();
-    442a:	4b03      	ldr	r3, [pc, #12]	; (4438 <main+0x14>)
-    442c:	4798      	blx	r3
+    44ee:	4b04      	ldr	r3, [pc, #16]	; (4500 <main+0x1c>)
+    44f0:	4798      	blx	r3
     nmain();
-    442e:	4b03      	ldr	r3, [pc, #12]	; (443c <main+0x18>)
-    4430:	4798      	blx	r3
-    4432:	bf00      	nop
-    4434:	000042a5 	.word	0x000042a5
-    4438:	00004441 	.word	0x00004441
-    443c:	00004401 	.word	0x00004401
+    44f2:	4b04      	ldr	r3, [pc, #16]	; (4504 <main+0x20>)
+    44f4:	4798      	blx	r3
+    44f6:	bf00      	nop
+    44f8:	000042a5 	.word	0x000042a5
+    44fc:	000043ed 	.word	0x000043ed
+    4500:	00004509 	.word	0x00004509
+    4504:	000044c9 	.word	0x000044c9
 
-00004440 <init_act_LED>:
+00004508 <init_act_LED>:
 	((Port *)hw)->Group[submodule_index].DIRTGL.reg = PORT_DIR_DIR(mask);
 }
 
 static inline void hri_port_set_DIR_reg(const void *const hw, uint8_t submodule_index, hri_port_dir_reg_t mask)
 {
 	((Port *)hw)->Group[submodule_index].DIRSET.reg = mask;
-    4440:	4b07      	ldr	r3, [pc, #28]	; (4460 <init_act_LED+0x20>)
+    4508:	4b07      	ldr	r3, [pc, #28]	; (4528 <init_act_LED+0x20>)
 
 static inline void hri_port_write_WRCONFIG_reg(const void *const hw, uint8_t submodule_index,
                                                hri_port_wrconfig_reg_t data)
 {
 	PORT_CRITICAL_SECTION_ENTER();
 	((Port *)hw)->Group[submodule_index].WRCONFIG.reg = data;
-    4442:	4908      	ldr	r1, [pc, #32]	; (4464 <init_act_LED+0x24>)
+    450a:	4908      	ldr	r1, [pc, #32]	; (452c <init_act_LED+0x24>)
 	((Port *)hw)->Group[submodule_index].DIRSET.reg = mask;
-    4444:	f44f 0200 	mov.w	r2, #8388608	; 0x800000
-    4448:	609a      	str	r2, [r3, #8]
+    450c:	f44f 0200 	mov.w	r2, #8388608	; 0x800000
+    4510:	609a      	str	r2, [r3, #8]
 	((Port *)hw)->Group[submodule_index].WRCONFIG.reg = data;
-    444a:	f04f 4280 	mov.w	r2, #1073741824	; 0x40000000
-    444e:	629a      	str	r2, [r3, #40]	; 0x28
-    4450:	6299      	str	r1, [r3, #40]	; 0x28
+    4512:	f04f 4280 	mov.w	r2, #1073741824	; 0x40000000
+    4516:	629a      	str	r2, [r3, #40]	; 0x28
+    4518:	6299      	str	r1, [r3, #40]	; 0x28
 	((Port *)hw)->Group[submodule_index].DIRSET.reg = mask;
-    4452:	f44f 3180 	mov.w	r1, #65536	; 0x10000
-    4456:	6099      	str	r1, [r3, #8]
+    451a:	f44f 3180 	mov.w	r1, #65536	; 0x10000
+    451e:	6099      	str	r1, [r3, #8]
 	((Port *)hw)->Group[submodule_index].WRCONFIG.reg = data;
-    4458:	629a      	str	r2, [r3, #40]	; 0x28
-    445a:	4a03      	ldr	r2, [pc, #12]	; (4468 <init_act_LED+0x28>)
-    445c:	629a      	str	r2, [r3, #40]	; 0x28
+    4520:	629a      	str	r2, [r3, #40]	; 0x28
+    4522:	4a03      	ldr	r2, [pc, #12]	; (4530 <init_act_LED+0x28>)
+    4524:	629a      	str	r2, [r3, #40]	; 0x28
 // #include "gpio_local.h"
 
 void init_act_LED(void) {
     gpio_set_pin_direction(PA23, GPIO_DIRECTION_OUT);
     gpio_set_pin_direction(PA16, GPIO_DIRECTION_OUT);
 }
-    445e:	4770      	bx	lr
-    4460:	41008000 	.word	0x41008000
-    4464:	c0000080 	.word	0xc0000080
-    4468:	c0000001 	.word	0xc0000001
+    4526:	4770      	bx	lr
+    4528:	41008000 	.word	0x41008000
+    452c:	c0000080 	.word	0xc0000080
+    4530:	c0000001 	.word	0xc0000001
 
-0000446c <raise_D13_metro>:
+00004534 <raise_D13_metro>:
 	((Port *)hw)->Group[submodule_index].OUTSET.reg = mask;
-    446c:	4b02      	ldr	r3, [pc, #8]	; (4478 <raise_D13_metro+0xc>)
-    446e:	f44f 3280 	mov.w	r2, #65536	; 0x10000
-    4472:	619a      	str	r2, [r3, #24]
+    4534:	4b02      	ldr	r3, [pc, #8]	; (4540 <raise_D13_metro+0xc>)
+    4536:	f44f 3280 	mov.w	r2, #65536	; 0x10000
+    453a:	619a      	str	r2, [r3, #24]
 
 void raise_D13_metro(void) { // Metro M4 Express
     gpio_set_pin_level(PA16, true);
 }
-    4474:	4770      	bx	lr
-    4476:	bf00      	nop
-    4478:	41008000 	.word	0x41008000
+    453c:	4770      	bx	lr
+    453e:	bf00      	nop
+    4540:	41008000 	.word	0x41008000
 
-0000447c <raise_D13_feather>:
-    447c:	4b02      	ldr	r3, [pc, #8]	; (4488 <raise_D13_feather+0xc>)
-    447e:	f44f 0200 	mov.w	r2, #8388608	; 0x800000
-    4482:	619a      	str	r2, [r3, #24]
+00004544 <raise_D13_feather>:
+    4544:	4b02      	ldr	r3, [pc, #8]	; (4550 <raise_D13_feather+0xc>)
+    4546:	f44f 0200 	mov.w	r2, #8388608	; 0x800000
+    454a:	619a      	str	r2, [r3, #24]
 
 void raise_D13_feather(void) { // Feather M4 Express
     gpio_set_pin_level(PA23, true);
 }
-    4484:	4770      	bx	lr
-    4486:	bf00      	nop
-    4488:	41008000 	.word	0x41008000
+    454c:	4770      	bx	lr
+    454e:	bf00      	nop
+    4550:	41008000 	.word	0x41008000
 
-0000448c <lower_D13_metro>:
+00004554 <lower_D13_metro>:
 	((Port *)hw)->Group[submodule_index].OUTCLR.reg = mask;
-    448c:	4b02      	ldr	r3, [pc, #8]	; (4498 <lower_D13_metro+0xc>)
-    448e:	f44f 3280 	mov.w	r2, #65536	; 0x10000
-    4492:	615a      	str	r2, [r3, #20]
+    4554:	4b02      	ldr	r3, [pc, #8]	; (4560 <lower_D13_metro+0xc>)
+    4556:	f44f 3280 	mov.w	r2, #65536	; 0x10000
+    455a:	615a      	str	r2, [r3, #20]
 
 void lower_D13_metro(void) {
     gpio_set_pin_level(PA16, false);
 }
-    4494:	4770      	bx	lr
-    4496:	bf00      	nop
-    4498:	41008000 	.word	0x41008000
+    455c:	4770      	bx	lr
+    455e:	bf00      	nop
+    4560:	41008000 	.word	0x41008000
 
-0000449c <lower_D13_feather>:
-    449c:	4b02      	ldr	r3, [pc, #8]	; (44a8 <lower_D13_feather+0xc>)
-    449e:	f44f 0200 	mov.w	r2, #8388608	; 0x800000
-    44a2:	615a      	str	r2, [r3, #20]
+00004564 <lower_D13_feather>:
+    4564:	4b02      	ldr	r3, [pc, #8]	; (4570 <lower_D13_feather+0xc>)
+    4566:	f44f 0200 	mov.w	r2, #8388608	; 0x800000
+    456a:	615a      	str	r2, [r3, #20]
 
 void lower_D13_feather(void) {
     gpio_set_pin_level(PA23, false);
 }
-    44a4:	4770      	bx	lr
-    44a6:	bf00      	nop
-    44a8:	41008000 	.word	0x41008000
+    456c:	4770      	bx	lr
+    456e:	bf00      	nop
+    4570:	41008000 	.word	0x41008000
 
-000044ac <__libc_init_array>:
-    44ac:	b570      	push	{r4, r5, r6, lr}
-    44ae:	4e0d      	ldr	r6, [pc, #52]	; (44e4 <__libc_init_array+0x38>)
-    44b0:	4c0d      	ldr	r4, [pc, #52]	; (44e8 <__libc_init_array+0x3c>)
-    44b2:	1ba4      	subs	r4, r4, r6
-    44b4:	10a4      	asrs	r4, r4, #2
-    44b6:	2500      	movs	r5, #0
-    44b8:	42a5      	cmp	r5, r4
-    44ba:	d109      	bne.n	44d0 <__libc_init_array+0x24>
-    44bc:	4e0b      	ldr	r6, [pc, #44]	; (44ec <__libc_init_array+0x40>)
-    44be:	4c0c      	ldr	r4, [pc, #48]	; (44f0 <__libc_init_array+0x44>)
-    44c0:	f000 f818 	bl	44f4 <_init>
-    44c4:	1ba4      	subs	r4, r4, r6
-    44c6:	10a4      	asrs	r4, r4, #2
-    44c8:	2500      	movs	r5, #0
-    44ca:	42a5      	cmp	r5, r4
-    44cc:	d105      	bne.n	44da <__libc_init_array+0x2e>
-    44ce:	bd70      	pop	{r4, r5, r6, pc}
-    44d0:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
-    44d4:	4798      	blx	r3
-    44d6:	3501      	adds	r5, #1
-    44d8:	e7ee      	b.n	44b8 <__libc_init_array+0xc>
-    44da:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
-    44de:	4798      	blx	r3
-    44e0:	3501      	adds	r5, #1
-    44e2:	e7f2      	b.n	44ca <__libc_init_array+0x1e>
-    44e4:	00004500 	.word	0x00004500
-    44e8:	00004500 	.word	0x00004500
-    44ec:	00004500 	.word	0x00004500
-    44f0:	00004504 	.word	0x00004504
+00004574 <__libc_init_array>:
+    4574:	b570      	push	{r4, r5, r6, lr}
+    4576:	4e0d      	ldr	r6, [pc, #52]	; (45ac <__libc_init_array+0x38>)
+    4578:	4c0d      	ldr	r4, [pc, #52]	; (45b0 <__libc_init_array+0x3c>)
+    457a:	1ba4      	subs	r4, r4, r6
+    457c:	10a4      	asrs	r4, r4, #2
+    457e:	2500      	movs	r5, #0
+    4580:	42a5      	cmp	r5, r4
+    4582:	d109      	bne.n	4598 <__libc_init_array+0x24>
+    4584:	4e0b      	ldr	r6, [pc, #44]	; (45b4 <__libc_init_array+0x40>)
+    4586:	4c0c      	ldr	r4, [pc, #48]	; (45b8 <__libc_init_array+0x44>)
+    4588:	f000 f818 	bl	45bc <_init>
+    458c:	1ba4      	subs	r4, r4, r6
+    458e:	10a4      	asrs	r4, r4, #2
+    4590:	2500      	movs	r5, #0
+    4592:	42a5      	cmp	r5, r4
+    4594:	d105      	bne.n	45a2 <__libc_init_array+0x2e>
+    4596:	bd70      	pop	{r4, r5, r6, pc}
+    4598:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+    459c:	4798      	blx	r3
+    459e:	3501      	adds	r5, #1
+    45a0:	e7ee      	b.n	4580 <__libc_init_array+0xc>
+    45a2:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+    45a6:	4798      	blx	r3
+    45a8:	3501      	adds	r5, #1
+    45aa:	e7f2      	b.n	4592 <__libc_init_array+0x1e>
+    45ac:	000045c8 	.word	0x000045c8
+    45b0:	000045c8 	.word	0x000045c8
+    45b4:	000045c8 	.word	0x000045c8
+    45b8:	000045cc 	.word	0x000045cc
 
-000044f4 <_init>:
-    44f4:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
-    44f6:	bf00      	nop
-    44f8:	bcf8      	pop	{r3, r4, r5, r6, r7}
-    44fa:	bc08      	pop	{r3}
-    44fc:	469e      	mov	lr, r3
-    44fe:	4770      	bx	lr
+000045bc <_init>:
+    45bc:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    45be:	bf00      	nop
+    45c0:	bcf8      	pop	{r3, r4, r5, r6, r7}
+    45c2:	bc08      	pop	{r3}
+    45c4:	469e      	mov	lr, r3
+    45c6:	4770      	bx	lr
 
-00004500 <__init_array_start>:
-    4500:	00004289 	.word	0x00004289
+000045c8 <__init_array_start>:
+    45c8:	00004289 	.word	0x00004289
 
-00004504 <_fini>:
-    4504:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
-    4506:	bf00      	nop
-    4508:	bcf8      	pop	{r3, r4, r5, r6, r7}
-    450a:	bc08      	pop	{r3}
-    450c:	469e      	mov	lr, r3
-    450e:	4770      	bx	lr
+000045cc <_fini>:
+    45cc:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    45ce:	bf00      	nop
+    45d0:	bcf8      	pop	{r3, r4, r5, r6, r7}
+    45d2:	bc08      	pop	{r3}
+    45d4:	469e      	mov	lr, r3
+    45d6:	4770      	bx	lr
 
-00004510 <__fini_array_start>:
-    4510:	00004265 	.word	0x00004265
+000045d8 <__fini_array_start>:
+    45d8:	00004265 	.word	0x00004265

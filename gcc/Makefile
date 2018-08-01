@@ -64,6 +64,7 @@ hal/src/hal_init.o \
 gcc/gcc/startup_samd51.o \
 main.o \
 gpio_local.o \
+usuart.o \
 hpl/osc32kctrl/hpl_osc32kctrl.o \
 examples/driver_examples.o \
 driver_init.o \
@@ -95,6 +96,7 @@ OBJS_AS_ARGS +=  \
 "gcc/gcc/startup_samd51.o" \
 "main.o" \
 "gpio_local.o" \
+"usuart.o" \
 "hpl/osc32kctrl/hpl_osc32kctrl.o" \
 "examples/driver_examples.o" \
 "driver_init.o" \
@@ -131,6 +133,7 @@ DEPS_AS_ARGS +=  \
 "hpl/osc32kctrl/hpl_osc32kctrl.d" \
 "main.d" \
 "gpio_local.d" \
+"usuart.d" \
 "examples/driver_examples.d" \
 "hal/src/hal_sleep.d" \
 "hpl/sercom/hpl_sercom.d" \

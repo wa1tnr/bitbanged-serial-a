@@ -1,9 +1,17 @@
+// Wed Aug  1 04:18:10 UTC 2018
 // Tue Jul 31 13:45:08 UTC 2018
+
+/*
+ git $ ag 38400
+hpl_sercom_config.h
+1415:#define CONF_SERCOM_5_USART_BAUD 38400
+*/
 
 // main.c
 
 #include "atmel_start.h"
 #include "gpio_local.h"
+#include "usuart.h"
 
 /* Many changes: by wa1tnr, July 2018 */
 
@@ -68,8 +76,9 @@ void long_long_timer(void) {
 
 // clock clock who's there ///////////////////
 
-#ifdef JAKES_CLOCK
-void Xclock_init(void){ // Jake Read
+#undef JAKES_CLOCK
+#ifndef JAKES_CLOCK
+void clock_init(void){ // Jake Read
     NVMCTRL->CTRLA.reg |= NVMCTRL_CTRLA_RWS(0);
     GCLK->CTRLA.bit.SWRST = 1;
     while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_SWRST);
@@ -107,16 +116,20 @@ void Xclock_init(void){ // Jake Read
 
 void nmain(void) {
         raise_LED_pins(); // raise_D13(); raise_D12();
-        activity_LED_demo();
+        // activity_LED_demo();
 	while (1) {
             flicker_LED();
+            // short_timer();
+
+            // this demo stops everything:
+            // USUART_5_demo(); // let's see what the cat drug in
             short_timer();
 	}
 }
 
 int main(void) {
     SystemInit();
-    // clock_init();
+    clock_init();
     init_act_LED();
     nmain();
     while (1) {

@@ -7,7 +7,8 @@
 #include <peripheral_clk_config.h>
 
 #ifndef CONF_SERCOM_0_USART_ENABLE
-#define CONF_SERCOM_0_USART_ENABLE 1
+// #define CONF_SERCOM_0_USART_ENABLE 1
+#define CONF_SERCOM_0_USART_ENABLE 0
 #endif
 
 // <h> Basic Configuration
@@ -276,7 +277,8 @@
 #include <peripheral_clk_config.h>
 
 #ifndef CONF_SERCOM_1_USART_ENABLE
-#define CONF_SERCOM_1_USART_ENABLE 1
+// #define CONF_SERCOM_1_USART_ENABLE 1
+#define CONF_SERCOM_1_USART_ENABLE 0
 #endif
 
 // <h> Basic Configuration
@@ -545,7 +547,8 @@
 #include <peripheral_clk_config.h>
 
 #ifndef CONF_SERCOM_2_USART_ENABLE
-#define CONF_SERCOM_2_USART_ENABLE 1
+// #define CONF_SERCOM_2_USART_ENABLE 1
+#define CONF_SERCOM_2_USART_ENABLE 0
 #endif
 
 // <h> Basic Configuration
@@ -814,7 +817,8 @@
 #include <peripheral_clk_config.h>
 
 #ifndef CONF_SERCOM_3_USART_ENABLE
-#define CONF_SERCOM_3_USART_ENABLE 1
+// #define CONF_SERCOM_3_USART_ENABLE 1
+#define CONF_SERCOM_3_USART_ENABLE 0
 #endif
 
 // <h> Basic Configuration
@@ -1083,7 +1087,8 @@
 #include <peripheral_clk_config.h>
 
 #ifndef CONF_SERCOM_4_USART_ENABLE
-#define CONF_SERCOM_4_USART_ENABLE 1
+// #define CONF_SERCOM_4_USART_ENABLE 1
+#define CONF_SERCOM_4_USART_ENABLE 0
 #endif
 
 // <h> Basic Configuration
@@ -1406,7 +1411,8 @@
 // <i> USART baud rate setting
 // <id> usart_baud_rate
 #ifndef CONF_SERCOM_5_USART_BAUD
-#define CONF_SERCOM_5_USART_BAUD 9600
+// factory // #define CONF_SERCOM_5_USART_BAUD 9600
+#define CONF_SERCOM_5_USART_BAUD 38400
 #endif
 
 // </h>
