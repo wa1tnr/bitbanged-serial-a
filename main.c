@@ -11,7 +11,7 @@ hpl_sercom_config.h
 
 #include "atmel_start.h"
 #include "gpio_local.h"
-#include "usuart.h"
+#include "usart.h"
 
 /* Many changes: by wa1tnr, July 2018 */
 
@@ -129,7 +129,7 @@ void nmain(void) {
 
 int main(void) {
     SystemInit();
-    clock_init();
+    // clock_init();
     init_act_LED();
     nmain();
     while (1) {
