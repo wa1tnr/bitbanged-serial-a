@@ -13,6 +13,8 @@
 /**
  * Example of using USART_0 to write "Hello World" using the IO abstraction.
  */
+
+/*
 void USART_0_example(void)
 {
 	struct io_descriptor *io;
@@ -21,10 +23,13 @@ void USART_0_example(void)
 
 	io_write(io, (uint8_t *)"Hello World!", 12);
 }
+*/
 
 /**
  * Example of using USART_1 to write "Hello World" using the IO abstraction.
  */
+
+/*
 void USART_1_example(void)
 {
 	struct io_descriptor *io;
@@ -33,10 +38,13 @@ void USART_1_example(void)
 
 	io_write(io, (uint8_t *)"Hello World!", 12);
 }
+*/
 
 /**
  * Example of using USART_2 to write "Hello World" using the IO abstraction.
  */
+
+/*
 void USART_2_example(void)
 {
 	struct io_descriptor *io;
@@ -45,10 +53,12 @@ void USART_2_example(void)
 
 	io_write(io, (uint8_t *)"Hello World!", 12);
 }
+*/
 
 /**
  * Example of using USART_3 to write "Hello World" using the IO abstraction.
  */
+/*
 void USART_3_example(void)
 {
 	struct io_descriptor *io;
@@ -57,10 +67,12 @@ void USART_3_example(void)
 
 	io_write(io, (uint8_t *)"Hello World!", 12);
 }
+*/
 
 /**
  * Example of using USART_4 to write "Hello World" using the IO abstraction.
  */
+/*
 void USART_4_example(void)
 {
 	struct io_descriptor *io;
@@ -69,6 +81,7 @@ void USART_4_example(void)
 
 	io_write(io, (uint8_t *)"Hello World!", 12);
 }
+*/
 
 /**
  * Example of using USART_5 to write "Hello World" using the IO abstraction.

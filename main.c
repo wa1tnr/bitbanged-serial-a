@@ -114,7 +114,7 @@ void nmain(void) {
 
 int main(void) {
     SystemInit();
-    clock_init();
+    // clock_init();
     init_act_LED();
     nmain();
     while (1) {
