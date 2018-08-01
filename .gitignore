@@ -79,3 +79,5 @@ gcc/main.o
 gcc/usuart.d
 # sacr*
 remot*
+gcc/Makefile__*
+main.c__*

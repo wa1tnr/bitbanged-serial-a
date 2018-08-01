@@ -12,19 +12,7 @@
 extern "C" {
 #endif
 
-/*
-void USART_0_example(void);
-
-void USART_1_example(void);
-
-void USART_2_example(void);
-
-void USART_3_example(void);
-
-void USART_4_example(void);
-*/
-
-void USART_5_example(void);
+void USART_0a_example(void);
 
 void delay_example(void);
 

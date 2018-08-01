@@ -11,86 +11,13 @@
 #include "utils.h"
 
 /**
- * Example of using USART_0 to write "Hello World" using the IO abstraction.
+ * Example of using USART_0a to write "Hello World" using the IO abstraction.
  */
-
-/*
-void USART_0_example(void)
+void USART_0a_example(void)
 {
 	struct io_descriptor *io;
-	usart_sync_get_io_descriptor(&USART_0, &io);
-	usart_sync_enable(&USART_0);
-
-	io_write(io, (uint8_t *)"Hello World!", 12);
-}
-*/
-
-/**
- * Example of using USART_1 to write "Hello World" using the IO abstraction.
- */
-
-/*
-void USART_1_example(void)
-{
-	struct io_descriptor *io;
-	usart_sync_get_io_descriptor(&USART_1, &io);
-	usart_sync_enable(&USART_1);
-
-	io_write(io, (uint8_t *)"Hello World!", 12);
-}
-*/
-
-/**
- * Example of using USART_2 to write "Hello World" using the IO abstraction.
- */
-
-/*
-void USART_2_example(void)
-{
-	struct io_descriptor *io;
-	usart_sync_get_io_descriptor(&USART_2, &io);
-	usart_sync_enable(&USART_2);
-
-	io_write(io, (uint8_t *)"Hello World!", 12);
-}
-*/
-
-/**
- * Example of using USART_3 to write "Hello World" using the IO abstraction.
- */
-/*
-void USART_3_example(void)
-{
-	struct io_descriptor *io;
-	usart_sync_get_io_descriptor(&USART_3, &io);
-	usart_sync_enable(&USART_3);
-
-	io_write(io, (uint8_t *)"Hello World!", 12);
-}
-*/
-
-/**
- * Example of using USART_4 to write "Hello World" using the IO abstraction.
- */
-/*
-void USART_4_example(void)
-{
-	struct io_descriptor *io;
-	usart_sync_get_io_descriptor(&USART_4, &io);
-	usart_sync_enable(&USART_4);
-
-	io_write(io, (uint8_t *)"Hello World!", 12);
-}
-*/
-
-/**
- * Example of using USART_5 to write "Hello World" using the IO abstraction.
- */
-void USART_5_example(void)
-{
-	struct io_descriptor *io;
-	usart_sync_get_io_descriptor(&USART_5, &io);
-	usart_sync_enable(&USART_5);
+	usart_sync_get_io_descriptor(&USART_0a, &io);
+	usart_sync_enable(&USART_0a);
 
 	io_write(io, (uint8_t *)"Hello World!", 12);
 }
