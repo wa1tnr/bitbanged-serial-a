@@ -1,10 +1,10 @@
-/* usuart.h */
+/* usart.h */
 
 // #include "driver_examples.h"
 // #include "driver_init.h"
 // #include "utils.h"
 
-extern void USUART_5_demo(void);
+extern void USART_0a_demo(void);
 
 /*
 USART_5_demo();
