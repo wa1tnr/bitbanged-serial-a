@@ -102,4 +102,3 @@
 // <<< end of configuration section >>>
 
 #endif // HPL_MCLK_CONFIG_H
-// foo

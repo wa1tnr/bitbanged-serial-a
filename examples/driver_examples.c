@@ -10,28 +10,76 @@
 #include "driver_init.h"
 #include "utils.h"
 
-static uint8_t src_data[512];
-static uint8_t chk_data[512];
 /**
- * Example of using FLASH_0 to read and write buffer.
+ * Example of using USART_0 to write "Hello World" using the IO abstraction.
  */
-void FLASH_0_example(void)
+void USART_0_example(void)
 {
-	uint32_t page_size;
-	uint16_t i;
+	struct io_descriptor *io;
+	usart_sync_get_io_descriptor(&USART_0, &io);
+	usart_sync_enable(&USART_0);
 
-	/* Init source data */
-	page_size = flash_get_page_size(&FLASH_0);
+	io_write(io, (uint8_t *)"Hello World!", 12);
+}
 
-	for (i = 0; i < page_size; i++) {
-		src_data[i] = i;
-	}
+/**
+ * Example of using USART_1 to write "Hello World" using the IO abstraction.
+ */
+void USART_1_example(void)
+{
+	struct io_descriptor *io;
+	usart_sync_get_io_descriptor(&USART_1, &io);
+	usart_sync_enable(&USART_1);
 
-	/* Write data to flash */
-	flash_write(&FLASH_0, 0x3200, src_data, page_size);
+	io_write(io, (uint8_t *)"Hello World!", 12);
+}
 
-	/* Read data from flash */
-	flash_read(&FLASH_0, 0x3200, chk_data, page_size);
+/**
+ * Example of using USART_2 to write "Hello World" using the IO abstraction.
+ */
+void USART_2_example(void)
+{
+	struct io_descriptor *io;
+	usart_sync_get_io_descriptor(&USART_2, &io);
+	usart_sync_enable(&USART_2);
+
+	io_write(io, (uint8_t *)"Hello World!", 12);
+}
+
+/**
+ * Example of using USART_3 to write "Hello World" using the IO abstraction.
+ */
+void USART_3_example(void)
+{
+	struct io_descriptor *io;
+	usart_sync_get_io_descriptor(&USART_3, &io);
+	usart_sync_enable(&USART_3);
+
+	io_write(io, (uint8_t *)"Hello World!", 12);
+}
+
+/**
+ * Example of using USART_4 to write "Hello World" using the IO abstraction.
+ */
+void USART_4_example(void)
+{
+	struct io_descriptor *io;
+	usart_sync_get_io_descriptor(&USART_4, &io);
+	usart_sync_enable(&USART_4);
+
+	io_write(io, (uint8_t *)"Hello World!", 12);
+}
+
+/**
+ * Example of using USART_5 to write "Hello World" using the IO abstraction.
+ */
+void USART_5_example(void)
+{
+	struct io_descriptor *io;
+	usart_sync_get_io_descriptor(&USART_5, &io);
+	usart_sync_enable(&USART_5);
+
+	io_write(io, (uint8_t *)"Hello World!", 12);
 }
 
 void delay_example(void)

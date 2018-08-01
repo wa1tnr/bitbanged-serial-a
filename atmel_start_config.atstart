@@ -562,7 +562,7 @@ drivers:
       enable_gclk_gen_10: false
       enable_gclk_gen_11: false
       enable_gclk_gen_2: false
-      enable_gclk_gen_3: false
+      enable_gclk_gen_3: true
       enable_gclk_gen_4: false
       enable_gclk_gen_5: false
       enable_gclk_gen_6: false
@@ -571,7 +571,7 @@ drivers:
       enable_gclk_gen_9: false
       gclk_arch_gen_0_enable: true
       gclk_arch_gen_0_idc: false
-      gclk_arch_gen_0_oe: false
+      gclk_arch_gen_0_oe: true
       gclk_arch_gen_0_oov: false
       gclk_arch_gen_0_runstdby: false
       gclk_arch_gen_10_enable: false
@@ -594,9 +594,9 @@ drivers:
       gclk_arch_gen_2_oe: false
       gclk_arch_gen_2_oov: false
       gclk_arch_gen_2_runstdby: false
-      gclk_arch_gen_3_enable: false
+      gclk_arch_gen_3_enable: true
       gclk_arch_gen_3_idc: false
-      gclk_arch_gen_3_oe: false
+      gclk_arch_gen_3_oe: true
       gclk_arch_gen_3_oov: false
       gclk_arch_gen_3_runstdby: false
       gclk_arch_gen_4_enable: false
@@ -631,7 +631,7 @@ drivers:
       gclk_arch_gen_9_runstdby: false
       gclk_gen_0_div: 1
       gclk_gen_0_div_sel: false
-      gclk_gen_0_oscillator: Digital Phase Locked Loop (DPLL0)
+      gclk_gen_0_oscillator: Digital Frequency Locked Loop (DFLL48M)
       gclk_gen_10_div: 1
       gclk_gen_10_div_sel: false
       gclk_gen_10_oscillator: External Crystal Oscillator 8-48MHz (XOSC1)
@@ -646,7 +646,7 @@ drivers:
       gclk_gen_2_oscillator: External Crystal Oscillator 8-48MHz (XOSC1)
       gclk_gen_3_div: 1
       gclk_gen_3_div_sel: false
-      gclk_gen_3_oscillator: 32kHz External Crystal Oscillator (XOSC32K)
+      gclk_gen_3_oscillator: 32kHz Ultra Low Power Internal Oscillator (OSCULP32K)
       gclk_gen_4_div: 1
       gclk_gen_4_div_sel: false
       gclk_gen_4_oscillator: External Crystal Oscillator 8-48MHz (XOSC1)
@@ -690,19 +690,6 @@ drivers:
         - name: CPU
           input: CPU
         configuration: {}
-  FLASH_0:
-    user_label: FLASH_0
-    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::NVMCTRL::driver_config_definition::Flash::HAL:Driver:FLASH
-    functionality: Flash
-    api: HAL:Driver:FLASH
-    configuration:
-      nvm_arch_cache0: false
-      nvm_arch_cache1: false
-      nvm_arch_sleepprm: Wake On Access
-    optional_signals: []
-    variant: null
-    clocks:
-      domain_group: null
   OSC32KCTRL:
     user_label: OSC32KCTRL
     definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::OSC32KCTRL::driver_config_definition::OSC32KCTRL::HAL:HPL:OSC32KCTRL
@@ -711,7 +698,7 @@ drivers:
     configuration:
       enable_osculp32k: true
       enable_rtc_source: false
-      enable_xosc32k: true
+      enable_xosc32k: false
       osculp32k_calib: 0
       osculp32k_calib_enable: false
       rtc_1khz_selection: false
@@ -721,7 +708,7 @@ drivers:
       xosc32k_arch_cgm: Standard mode
       xosc32k_arch_en1k: false
       xosc32k_arch_en32k: false
-      xosc32k_arch_enable: true
+      xosc32k_arch_enable: false
       xosc32k_arch_ondemand: true
       xosc32k_arch_runstdby: false
       xosc32k_arch_startup: 62592us
@@ -738,11 +725,11 @@ drivers:
     api: HAL:HPL:OSCCTRL
     configuration:
       dfll_arch_bplckc: false
-      dfll_arch_calibration: false
-      dfll_arch_ccdis: false
+      dfll_arch_calibration: true
+      dfll_arch_ccdis: true
       dfll_arch_coarse: 31
       dfll_arch_cstep: 1
-      dfll_arch_enable: false
+      dfll_arch_enable: true
       dfll_arch_fine: 128
       dfll_arch_fstep: 1
       dfll_arch_llaw: false
@@ -750,18 +737,18 @@ drivers:
       dfll_arch_qldis: false
       dfll_arch_runstdby: false
       dfll_arch_stable: false
-      dfll_arch_usbcrm: false
+      dfll_arch_usbcrm: true
       dfll_arch_waitlock: true
       dfll_mode: Open Loop Mode
       dfll_mul: 0
       dfll_ref_clock: Generic clock generator 3
-      enable_dfll: false
-      enable_fdpll0: true
+      enable_dfll: true
+      enable_fdpll0: false
       enable_fdpll1: false
       enable_xosc0: false
       enable_xosc1: false
       fdpll0_arch_dcoen: false
-      fdpll0_arch_enable: true
+      fdpll0_arch_enable: false
       fdpll0_arch_filter: 0
       fdpll0_arch_lbypass: false
       fdpll0_arch_ltime: No time-out, automatic lock
@@ -822,6 +809,276 @@ drivers:
     variant: null
     clocks:
       domain_group: null
+  USART_0:
+    user_label: USART_0
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::SERCOM0::driver_config_definition::UART::HAL:Driver:USART.Sync
+    functionality: USART
+    api: HAL:Driver:USART_Sync
+    configuration:
+      usart_advanced: false
+      usart_arch_clock_mode: USART with internal clock
+      usart_arch_cloden: false
+      usart_arch_dbgstop: Keep running
+      usart_arch_dord: LSB is transmitted first
+      usart_arch_enc: No encoding
+      usart_arch_fractional: 0
+      usart_arch_ibon: false
+      usart_arch_lin_slave_enable: Disable
+      usart_arch_runstdby: false
+      usart_arch_sampa: 7-8-9 (3-4-5 8-bit over-sampling)
+      usart_arch_sampr: 16x arithmetic
+      usart_arch_sfde: false
+      usart_baud_rate: 9600
+      usart_character_size: 8 bits
+      usart_parity: No parity
+      usart_rx_enable: true
+      usart_stop_bit: One stop bit
+      usart_tx_enable: true
+    optional_signals: []
+    variant:
+      specification: TXPO=0, RXPO=1, CMODE=0
+      required_signals:
+      - name: SERCOM0/PAD/0
+        pad: PA04
+        label: TX
+      - name: SERCOM0/PAD/1
+        pad: PA05
+        label: RX
+    clocks:
+      domain_group:
+        nodes:
+        - name: Core
+          input: Generic clock generator 0
+        - name: Slow
+          input: Generic clock generator 3
+        configuration:
+          core_gclk_selection: Generic clock generator 0
+          slow_gclk_selection: Generic clock generator 3
+  USART_1:
+    user_label: USART_1
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::SERCOM1::driver_config_definition::UART::HAL:Driver:USART.Sync
+    functionality: USART
+    api: HAL:Driver:USART_Sync
+    configuration:
+      usart_advanced: false
+      usart_arch_clock_mode: USART with internal clock
+      usart_arch_cloden: false
+      usart_arch_dbgstop: Keep running
+      usart_arch_dord: LSB is transmitted first
+      usart_arch_enc: No encoding
+      usart_arch_fractional: 0
+      usart_arch_ibon: false
+      usart_arch_lin_slave_enable: Disable
+      usart_arch_runstdby: false
+      usart_arch_sampa: 7-8-9 (3-4-5 8-bit over-sampling)
+      usart_arch_sampr: 16x arithmetic
+      usart_arch_sfde: false
+      usart_baud_rate: 9600
+      usart_character_size: 8 bits
+      usart_parity: No parity
+      usart_rx_enable: true
+      usart_stop_bit: One stop bit
+      usart_tx_enable: true
+    optional_signals: []
+    variant:
+      specification: TXPO=0, RXPO=1, CMODE=0
+      required_signals:
+      - name: SERCOM1/PAD/0
+        pad: PA00
+        label: TX
+      - name: SERCOM1/PAD/1
+        pad: PA01
+        label: RX
+    clocks:
+      domain_group:
+        nodes:
+        - name: Core
+          input: Generic clock generator 0
+        - name: Slow
+          input: Generic clock generator 3
+        configuration:
+          core_gclk_selection: Generic clock generator 0
+          slow_gclk_selection: Generic clock generator 3
+  USART_2:
+    user_label: USART_2
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::SERCOM2::driver_config_definition::UART::HAL:Driver:USART.Sync
+    functionality: USART
+    api: HAL:Driver:USART_Sync
+    configuration:
+      usart_advanced: false
+      usart_arch_clock_mode: USART with internal clock
+      usart_arch_cloden: false
+      usart_arch_dbgstop: Keep running
+      usart_arch_dord: LSB is transmitted first
+      usart_arch_enc: No encoding
+      usart_arch_fractional: 0
+      usart_arch_ibon: false
+      usart_arch_lin_slave_enable: Disable
+      usart_arch_runstdby: false
+      usart_arch_sampa: 7-8-9 (3-4-5 8-bit over-sampling)
+      usart_arch_sampr: 16x arithmetic
+      usart_arch_sfde: false
+      usart_baud_rate: 9600
+      usart_character_size: 8 bits
+      usart_parity: No parity
+      usart_rx_enable: true
+      usart_stop_bit: One stop bit
+      usart_tx_enable: true
+    optional_signals: []
+    variant:
+      specification: TXPO=0, RXPO=1, CMODE=0
+      required_signals:
+      - name: SERCOM2/PAD/0
+        pad: PA09
+        label: TX
+      - name: SERCOM2/PAD/1
+        pad: PA08
+        label: RX
+    clocks:
+      domain_group:
+        nodes:
+        - name: Core
+          input: Generic clock generator 0
+        - name: Slow
+          input: Generic clock generator 3
+        configuration:
+          core_gclk_selection: Generic clock generator 0
+          slow_gclk_selection: Generic clock generator 3
+  USART_3:
+    user_label: USART_3
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::SERCOM3::driver_config_definition::UART::HAL:Driver:USART.Sync
+    functionality: USART
+    api: HAL:Driver:USART_Sync
+    configuration:
+      usart_advanced: false
+      usart_arch_clock_mode: USART with internal clock
+      usart_arch_cloden: false
+      usart_arch_dbgstop: Keep running
+      usart_arch_dord: LSB is transmitted first
+      usart_arch_enc: No encoding
+      usart_arch_fractional: 0
+      usart_arch_ibon: false
+      usart_arch_lin_slave_enable: Disable
+      usart_arch_runstdby: false
+      usart_arch_sampa: 7-8-9 (3-4-5 8-bit over-sampling)
+      usart_arch_sampr: 16x arithmetic
+      usart_arch_sfde: false
+      usart_baud_rate: 9600
+      usart_character_size: 8 bits
+      usart_parity: No parity
+      usart_rx_enable: true
+      usart_stop_bit: One stop bit
+      usart_tx_enable: true
+    optional_signals: []
+    variant:
+      specification: TXPO=0, RXPO=1, CMODE=0
+      required_signals:
+      - name: SERCOM3/PAD/0
+        pad: PA17
+        label: TX
+      - name: SERCOM3/PAD/1
+        pad: PA16
+        label: RX
+    clocks:
+      domain_group:
+        nodes:
+        - name: Core
+          input: Generic clock generator 0
+        - name: Slow
+          input: Generic clock generator 3
+        configuration:
+          core_gclk_selection: Generic clock generator 0
+          slow_gclk_selection: Generic clock generator 3
+  USART_4:
+    user_label: USART_4
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::SERCOM4::driver_config_definition::UART::HAL:Driver:USART.Sync
+    functionality: USART
+    api: HAL:Driver:USART_Sync
+    configuration:
+      usart_advanced: false
+      usart_arch_clock_mode: USART with internal clock
+      usart_arch_cloden: false
+      usart_arch_dbgstop: Keep running
+      usart_arch_dord: LSB is transmitted first
+      usart_arch_enc: No encoding
+      usart_arch_fractional: 0
+      usart_arch_ibon: false
+      usart_arch_lin_slave_enable: Disable
+      usart_arch_runstdby: false
+      usart_arch_sampa: 7-8-9 (3-4-5 8-bit over-sampling)
+      usart_arch_sampr: 16x arithmetic
+      usart_arch_sfde: false
+      usart_baud_rate: 9600
+      usart_character_size: 8 bits
+      usart_parity: No parity
+      usart_rx_enable: true
+      usart_stop_bit: One stop bit
+      usart_tx_enable: true
+    optional_signals: []
+    variant:
+      specification: TXPO=0, RXPO=1, CMODE=0
+      required_signals:
+      - name: SERCOM4/PAD/0
+        pad: PB08
+        label: TX
+      - name: SERCOM4/PAD/1
+        pad: PB09
+        label: RX
+    clocks:
+      domain_group:
+        nodes:
+        - name: Core
+          input: Generic clock generator 0
+        - name: Slow
+          input: Generic clock generator 3
+        configuration:
+          core_gclk_selection: Generic clock generator 0
+          slow_gclk_selection: Generic clock generator 3
+  USART_5:
+    user_label: USART_5
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::SERCOM5::driver_config_definition::UART::HAL:Driver:USART.Sync
+    functionality: USART
+    api: HAL:Driver:USART_Sync
+    configuration:
+      usart_advanced: false
+      usart_arch_clock_mode: USART with internal clock
+      usart_arch_cloden: false
+      usart_arch_dbgstop: Keep running
+      usart_arch_dord: LSB is transmitted first
+      usart_arch_enc: No encoding
+      usart_arch_fractional: 0
+      usart_arch_ibon: false
+      usart_arch_lin_slave_enable: Disable
+      usart_arch_runstdby: false
+      usart_arch_sampa: 7-8-9 (3-4-5 8-bit over-sampling)
+      usart_arch_sampr: 16x arithmetic
+      usart_arch_sfde: false
+      usart_baud_rate: 9600
+      usart_character_size: 8 bits
+      usart_parity: No parity
+      usart_rx_enable: true
+      usart_stop_bit: One stop bit
+      usart_tx_enable: true
+    optional_signals: []
+    variant:
+      specification: TXPO=0, RXPO=1, CMODE=0
+      required_signals:
+      - name: SERCOM5/PAD/0
+        pad: PB16
+        label: TX
+      - name: SERCOM5/PAD/1
+        pad: PB17
+        label: RX
+    clocks:
+      domain_group:
+        nodes:
+        - name: Core
+          input: Generic clock generator 0
+        - name: Slow
+          input: Generic clock generator 3
+        configuration:
+          core_gclk_selection: Generic clock generator 0
+          slow_gclk_selection: Generic clock generator 3
   DELAY_0:
     user_label: DELAY_0
     definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::SysTick::driver_config_definition::Delay::HAL:Driver:Delay
@@ -834,18 +1091,82 @@ drivers:
     clocks:
       domain_group: null
 pads:
+  PA00:
+    name: PA00
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA00
+    mode: ''
+    user_label: PA00
+    configuration: null
+  PA01:
+    name: PA01
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA01
+    mode: ''
+    user_label: PA01
+    configuration: null
+  PB08:
+    name: PB08
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PB08
+    mode: ''
+    user_label: PB08
+    configuration: null
+  PB09:
+    name: PB09
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PB09
+    mode: ''
+    user_label: PB09
+    configuration: null
+  PA04:
+    name: PA04
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA04
+    mode: ''
+    user_label: PA04
+    configuration: null
+  PA05:
+    name: PA05
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA05
+    mode: ''
+    user_label: PA05
+    configuration: null
+  PA08:
+    name: PA08
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA08
+    mode: ''
+    user_label: PA08
+    configuration: null
+  PA09:
+    name: PA09
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA09
+    mode: ''
+    user_label: PA09
+    configuration: null
   PA16:
     name: PA16
     definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA16
     mode: Digital output
     user_label: PA16
-    configuration:
-      pad_initial_level: High
+    configuration: null
+  PA17:
+    name: PA17
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA17
+    mode: ''
+    user_label: PA17
+    configuration: null
+  PB16:
+    name: PB16
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PB16
+    mode: Peripheral IO
+    user_label: PB16
+    configuration: null
+  PB17:
+    name: PB17
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PB17
+    mode: Peripheral IO
+    user_label: PB17
+    configuration: null
   PA23:
     name: PA23
     definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA23
     mode: Digital output
     user_label: PA23
-    configuration:
-      pad_initial_level: High
+    configuration: null
 toolchain_options: []
