@@ -1,7 +1,7 @@
 aibm
 
 # Prerequisites
-*.d
+# *.d
 
 # Object files
 *.o
@@ -75,5 +75,7 @@ gcc/hal/
 gcc/hpl/
 gcc/main.d
 gcc/main.o
-sacr*
+# extra .d files need adding since the global was too extensive
+gcc/usuart.d
+# sacr*
 remot*
