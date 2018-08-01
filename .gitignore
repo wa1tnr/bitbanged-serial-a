@@ -81,3 +81,4 @@ gcc/usuart.d
 remot*
 gcc/Makefile__*
 main.c__*
+gcc/usart.d
