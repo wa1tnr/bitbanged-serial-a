@@ -11,7 +11,9 @@ hpl_sercom_config.h
 
 #include "atmel_start.h"
 #include "gpio_local.h"
-#include "usart.h"
+// #include "usart.h"
+#include "uartport.h"
+#include "hardware.h"
 
 /* Many changes: by wa1tnr, July 2018 */
 
@@ -21,22 +23,25 @@ void uSec(void) {
     }
 }
 
+
 void short_timer(void) { // human blinkie timescale
     uint32_t on_time  = 2140111222; // it's 2147 something ;)
-    for(on_time =       2140112; on_time > 0; on_time--) { // 21.4 million
-        uSec();
+    for(int j = 2; j>0; j--) {
+        for(on_time =       2140112; on_time > 0; on_time--) { // 21.4 million
+            uSec();
+        }
     }
 }
 
 void raise_LED_pins(void) { // multiple target boards
     // raise_D13(); raise_D12();
-    raise_D13_metro();   // Metro M4 Express
+    // raise_D13_metro();   // Metro M4 Express
     raise_D13_feather(); // Feather M4 Express
 }
 
 void lower_LED_pins(void) {
     // lower_D13(); lower_D12();
-    lower_D13_metro();
+    // lower_D13_metro();
     lower_D13_feather();
 }
 
@@ -119,17 +124,18 @@ void nmain(void) {
         // activity_LED_demo();
 	while (1) {
             flicker_LED();
-            // short_timer();
-
-            // this demo stops everything:
-            // USUART_5_demo(); // let's see what the cat drug in
             short_timer();
 	}
 }
 
 int main(void) {
     SystemInit();
-    // clock_init();
+
+// new uncommented ###bookmark two lines
+    clock_init();
+    // SysTick_Config(4000000);
+// end new
+
     init_act_LED();
     nmain();
     while (1) {
