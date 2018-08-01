@@ -68,7 +68,8 @@ void long_long_timer(void) {
 
 // clock clock who's there ///////////////////
 
-void clock_init(void){ // Jake Read
+#ifdef JAKES_CLOCK
+void Xclock_init(void){ // Jake Read
     NVMCTRL->CTRLA.reg |= NVMCTRL_CTRLA_RWS(0);
     GCLK->CTRLA.bit.SWRST = 1;
     while(GCLK->SYNCBUSY.reg & GCLK_SYNCBUSY_SWRST);
@@ -102,6 +103,7 @@ void clock_init(void){ // Jake Read
 
     MCLK->CPUDIV.reg = MCLK_CPUDIV_DIV_DIV1;
 }
+#endif // #ifdef JAKES_CLOCK
 
 void nmain(void) {
         raise_LED_pins(); // raise_D13(); raise_D12();
