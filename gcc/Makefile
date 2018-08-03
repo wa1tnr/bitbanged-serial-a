@@ -221,7 +221,15 @@ endif
 $(SUB_DIRS):
 	$(MK_DIR) "$@"
 
-install:
+arc:
+	cp  ./AtmelStart.bin    _stored/AtmelStart.bin
+	cp  ./AtmelStart.eep    _stored/AtmelStart.eep
+	cp  ./AtmelStart.elf    _stored/AtmelStart.elf
+	cp  ./AtmelStart.hex    _stored/AtmelStart.hex
+	cp  ./AtmelStart.lss    _stored/AtmelStart.lss
+	cp  ./AtmelStart.map    _stored/AtmelStart.map
+
+install: arc
 	./scripts/_bossac_local.sh ./AtmelStart.bin
 
 # git checkout -- AtmelStart.bin
