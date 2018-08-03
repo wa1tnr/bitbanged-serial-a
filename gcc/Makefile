@@ -224,6 +224,8 @@ $(SUB_DIRS):
 install:
 	./scripts/_bossac_local.sh ./AtmelStart.bin
 
+# git checkout -- AtmelStart.bin
+
 clean:
 	rm -f $(OBJS_AS_ARGS)
 	rm -f $(OUTPUT_FILE_PATH)
