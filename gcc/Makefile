@@ -222,17 +222,27 @@ $(SUB_DIRS):
 	$(MK_DIR) "$@"
 
 arc:
-	cp  ./AtmelStart.bin    _stored/AtmelStart.bin
-	cp  ./AtmelStart.eep    _stored/AtmelStart.eep
-	cp  ./AtmelStart.elf    _stored/AtmelStart.elf
-	cp  ./AtmelStart.hex    _stored/AtmelStart.hex
-	cp  ./AtmelStart.lss    _stored/AtmelStart.lss
-	cp  ./AtmelStart.map    _stored/AtmelStart.map
-
-install: arc
-	./scripts/_bossac_local.sh ./AtmelStart.bin
+	cp   ./AtmelStart.bin    _stored/AtmelStart.bin
+	cp   ./AtmelStart.eep    _stored/AtmelStart.eep
+	cp   ./AtmelStart.elf    _stored/AtmelStart.elf
+	cp   ./AtmelStart.hex    _stored/AtmelStart.hex
+	cp   ./AtmelStart.lss    _stored/AtmelStart.lss
+	cp   ./AtmelStart.map    _stored/AtmelStart.map
 
 # git checkout -- AtmelStart.bin
+
+checkout:
+	@git    checkout    --     AtmelStart.bin
+	@git    checkout    --     AtmelStart.elf
+	@git    checkout    --     AtmelStart.hex
+	@git    checkout    --     AtmelStart.lss
+	@git    checkout    --     AtmelStart.map
+
+#       @git    checkout    --     AtmelStart.eep
+
+install: arc checkout
+	./scripts/_bossac_local.sh ./AtmelStart.bin
+
 
 clean:
 	rm -f $(OBJS_AS_ARGS)
