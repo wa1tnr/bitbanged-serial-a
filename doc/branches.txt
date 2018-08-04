@@ -1,0 +1,7 @@
+
+testing-clockey-aa  seems to have Jake Read's code
+prominently in main.c and was probably what was
+sought after, to reapproach the uart using Jake's
+technique.
+
+Sat Aug  4 03:02:35 UTC 2018
