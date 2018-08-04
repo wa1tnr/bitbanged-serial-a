@@ -1,3 +1,4 @@
+
 aibm
 
 # Prerequisites
@@ -55,7 +56,12 @@ dkms.conf
 _cru*
 doc/Build/
 doc/Jake_Read/loca*
+gcc/AtmelStart.bin
 gcc/AtmelStart.eep
+gcc/AtmelStart.elf
+gcc/AtmelStart.hex
+gcc/AtmelStart.lss
+gcc/AtmelStart.map
 gcc/atmel_start.d
 gcc/atmel_start.o
 gcc/driver_init.d
