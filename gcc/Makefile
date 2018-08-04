@@ -244,8 +244,9 @@ checkout:
 
 # install: arc checkout
 install: arc
-	# running target 'make arc' now
+	# running target 'make install' now
 	./scripts/_bossac_local.sh ./AtmelStart.bin
+	# use 'make checkout' to tell git no changes to AtmelStart.*
 
 
 # for clean target:
