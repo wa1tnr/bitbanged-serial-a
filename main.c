@@ -2,6 +2,7 @@
 // main.c
 #include "atmel_start.h"
 #include "gpio_local.h"
+#include "driver_init.h"
 
 /*
 int main(void)
@@ -79,8 +80,9 @@ void nmain(void) {
 }
 
 int main(void) {
-    atmel_start_init();
-    // SystemInit(); // recent work used this rather than atmel_start_init()
+    // atmel_start_init();
+    // system_init(); // driver_init.h
+    SystemInit(); // recent work used this rather than atmel_start_init()
     // SysTick_Config(4000000);
     init_act_LED();
     nmain();
