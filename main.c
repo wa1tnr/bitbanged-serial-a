@@ -1,6 +1,11 @@
-// Wed Aug  8 04:40:12 UTC 2018
+#include <atmel_start.h>
 
-int main(void) {
-    for (volatile int i=2; i>0; i--) {
-    }
+int main(void)
+{
+	/* Initializes MCU, drivers and middleware */
+	atmel_start_init();
+
+	/* Replace with your application code */
+	while (1) {
+	}
 }
