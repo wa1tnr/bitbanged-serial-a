@@ -86,6 +86,10 @@ void nmain(void) {
         // fall-thru back to main();
 }
 
+void SysTick_Handler(void){
+    PORT->Group[0].OUTTGL.reg = (uint32_t)(1 << 21); // PA21 // D11 toggle
+}
+
 int main(void) {
 
 /*
@@ -98,6 +102,7 @@ int main(void) {
     SystemCoreClockUpdate(); // might pull in 48 MHz
     SystemInit(); // recent work used this rather than atmel_start_init()
     pins_setup();
+    SysTick_Config(2); // 1.7 MHz on toggle D11
 
     // nmain(); // has fall-thru now.
 
@@ -112,7 +117,7 @@ int main(void) {
     // nmain(); // has fall-thru now.
 
     while (1) {
-        PORT->Group[0].OUTTGL.reg = (uint32_t)(1 << 21); // PA21 // D11 toggle
+        // PORT->Group[0].OUTTGL.reg = (uint32_t)(1 << 21); // PA21 // D11 toggle
         // 3.5 MHz with no uSec loop
     }
 }
