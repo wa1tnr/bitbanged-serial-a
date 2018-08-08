@@ -84,7 +84,7 @@
 // <i> Indicates whether generic clock 1 configuration is enabled or not
 // <id> enable_gclk_gen_1
 #ifndef CONF_GCLK_GENERATOR_1_CONFIG
-#define CONF_GCLK_GENERATOR_1_CONFIG 0
+#define CONF_GCLK_GENERATOR_1_CONFIG 1
 #endif
 
 // <h> Generic Clock Generator Control
@@ -142,7 +142,7 @@
 // <i> Indicates whether Generic Clock Generator Enable is enabled or not
 // <id> gclk_arch_gen_1_enable
 #ifndef CONF_GCLK_GEN_1_GENEN
-#define CONF_GCLK_GEN_1_GENEN 0
+#define CONF_GCLK_GEN_1_GENEN 1
 #endif
 // </h>
 
@@ -150,7 +150,7 @@
 //<o> Generic clock generator 1 division <0x0000-0xFFFF>
 // <id> gclk_gen_1_div
 #ifndef CONF_GCLK_GEN_1_DIV
-#define CONF_GCLK_GEN_1_DIV 1
+#define CONF_GCLK_GEN_1_DIV 24
 #endif
 // </h>
 // </e>
@@ -252,14 +252,14 @@
 // <i> This defines the clock source for generic clock generator 3
 // <id> gclk_gen_3_oscillator
 #ifndef CONF_GCLK_GEN_3_SOURCE
-#define CONF_GCLK_GEN_3_SOURCE GCLK_GENCTRL_SRC_OSCULP32K
+#define CONF_GCLK_GEN_3_SOURCE GCLK_GENCTRL_SRC_XOSC32K
 #endif
 
 // <q> Run in Standby
 // <i> Indicates whether Run in Standby is enabled or not
 // <id> gclk_arch_gen_3_runstdby
 #ifndef CONF_GCLK_GEN_3_RUNSTDBY
-#define CONF_GCLK_GEN_3_RUNSTDBY 0
+#define CONF_GCLK_GEN_3_RUNSTDBY 1
 #endif
 
 // <q> Divide Selection
@@ -287,7 +287,7 @@
 // <i> Indicates whether Improve Duty Cycle is enabled or not
 // <id> gclk_arch_gen_3_idc
 #ifndef CONF_GCLK_GEN_3_IDC
-#define CONF_GCLK_GEN_3_IDC 0
+#define CONF_GCLK_GEN_3_IDC 1
 #endif
 
 // <q> Generic Clock Generator Enable

@@ -275,7 +275,7 @@
 // <i> Indicates whether Run in Standby is enabled or not
 // <id> dfll_arch_runstdby
 #ifndef CONF_DFLL_RUNSTDBY
-#define CONF_DFLL_RUNSTDBY 0
+#define CONF_DFLL_RUNSTDBY 1
 #endif
 
 // <q> USB Clock Recovery Mode
@@ -324,7 +324,7 @@
 // <i> Indicates whether Stable DFLL Frequency is enabled or not
 // <id> dfll_arch_stable
 #ifndef CONF_DFLL_STABLE
-#define CONF_DFLL_STABLE 0
+#define CONF_DFLL_STABLE 1
 #endif
 
 // <o> Operating Mode Selection

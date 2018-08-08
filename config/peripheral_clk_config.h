@@ -12,8 +12,24 @@
 #define CONF_CPU_FREQUENCY 48000000
 #endif
 
-// <y> Core Clock Source
-// <id> core_gclk_selection
+// <y> RTC Clock Source
+// <id> rtc_clk_selection
+// <RTC_CLOCK_SOURCE"> RTC source
+// <i> Select the clock source for RTC.
+#ifndef CONF_GCLK_RTC_SRC
+#define CONF_GCLK_RTC_SRC RTC_CLOCK_SOURCE
+#endif
+
+/**
+ * \def CONF_GCLK_RTC_FREQUENCY
+ * \brief RTC's Clock frequency
+ */
+#ifndef CONF_GCLK_RTC_FREQUENCY
+#define CONF_GCLK_RTC_FREQUENCY 32768
+#endif
+
+// <y> TC Clock Source
+// <id> tc_gclk_selection
 
 // <GCLK_PCHCTRL_GEN_GCLK0_Val"> Generic clock generator 0
 
@@ -39,13 +55,21 @@
 
 // <GCLK_PCHCTRL_GEN_GCLK11_Val"> Generic clock generator 11
 
-// <i> Select the clock source for CORE.
-#ifndef CONF_GCLK_SERCOM5_CORE_SRC
-#define CONF_GCLK_SERCOM5_CORE_SRC GCLK_PCHCTRL_GEN_GCLK0_Val
+// <i> Select the clock source for TC.
+#ifndef CONF_GCLK_TC0_SRC
+#define CONF_GCLK_TC0_SRC GCLK_PCHCTRL_GEN_GCLK1_Val
 #endif
 
-// <y> Slow Clock Source
-// <id> slow_gclk_selection
+/**
+ * \def CONF_GCLK_TC0_FREQUENCY
+ * \brief TC0's Clock frequency
+ */
+#ifndef CONF_GCLK_TC0_FREQUENCY
+#define CONF_GCLK_TC0_FREQUENCY 2000000
+#endif
+
+// <y> TC Clock Source
+// <id> tc_gclk_selection
 
 // <GCLK_PCHCTRL_GEN_GCLK0_Val"> Generic clock generator 0
 
@@ -71,25 +95,17 @@
 
 // <GCLK_PCHCTRL_GEN_GCLK11_Val"> Generic clock generator 11
 
-// <i> Select the slow clock source.
-#ifndef CONF_GCLK_SERCOM5_SLOW_SRC
-#define CONF_GCLK_SERCOM5_SLOW_SRC GCLK_PCHCTRL_GEN_GCLK3_Val
+// <i> Select the clock source for TC.
+#ifndef CONF_GCLK_TC1_SRC
+#define CONF_GCLK_TC1_SRC GCLK_PCHCTRL_GEN_GCLK1_Val
 #endif
 
 /**
- * \def CONF_GCLK_SERCOM5_CORE_FREQUENCY
- * \brief SERCOM5's Core Clock frequency
+ * \def CONF_GCLK_TC1_FREQUENCY
+ * \brief TC1's Clock frequency
  */
-#ifndef CONF_GCLK_SERCOM5_CORE_FREQUENCY
-#define CONF_GCLK_SERCOM5_CORE_FREQUENCY 48000000
-#endif
-
-/**
- * \def CONF_GCLK_SERCOM5_SLOW_FREQUENCY
- * \brief SERCOM5's Slow Clock frequency
- */
-#ifndef CONF_GCLK_SERCOM5_SLOW_FREQUENCY
-#define CONF_GCLK_SERCOM5_SLOW_FREQUENCY 32768
+#ifndef CONF_GCLK_TC1_FREQUENCY
+#define CONF_GCLK_TC1_FREQUENCY 2000000
 #endif
 
 // <<< end of configuration section >>>
