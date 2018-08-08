@@ -63,7 +63,6 @@ hpl/mclk/hpl_mclk.o \
 hpl/gclk/hpl_gclk.o \
 hal/src/hal_init.o \
 gcc/gcc/startup_samd51.o \
-main.o \
 hpl/osc32kctrl/hpl_osc32kctrl.o \
 hpl/rtc/hpl_rtc.o \
 examples/driver_examples.o \
@@ -73,6 +72,8 @@ hal/utils/src/utils_event.o \
 hal/src/hal_sleep.o \
 atmel_start.o \
 hpl/tc/hpl_tc.o \
+gpio_local.o \
+main.o \
 hal/src/hal_atomic.o
 
 OBJS_AS_ARGS +=  \
@@ -94,7 +95,6 @@ OBJS_AS_ARGS +=  \
 "hpl/gclk/hpl_gclk.o" \
 "hal/src/hal_init.o" \
 "gcc/gcc/startup_samd51.o" \
-"main.o" \
 "hpl/osc32kctrl/hpl_osc32kctrl.o" \
 "hpl/rtc/hpl_rtc.o" \
 "examples/driver_examples.o" \
@@ -104,6 +104,8 @@ OBJS_AS_ARGS +=  \
 "hal/src/hal_sleep.o" \
 "atmel_start.o" \
 "hpl/tc/hpl_tc.o" \
+"gpio_local.o" \
+"main.o" \
 "hal/src/hal_atomic.o"
 
 # List the dependency files
@@ -130,7 +132,6 @@ DEPS_AS_ARGS +=  \
 "hpl/mclk/hpl_mclk.d" \
 "driver_init.d" \
 "hpl/osc32kctrl/hpl_osc32kctrl.d" \
-"main.d" \
 "examples/driver_examples.d" \
 "hpl/rtc/hpl_rtc.d" \
 "hal/src/hal_sleep.d" \
@@ -138,6 +139,8 @@ DEPS_AS_ARGS +=  \
 "hal/src/hal_atomic.d" \
 "hpl/tc/hpl_tc.d" \
 "hpl/oscctrl/hpl_oscctrl.d" \
+"gpio_local.d" \
+"main.d" \
 "atmel_start.d"
 
 OUTPUT_FILE_NAME :=AtmelStart
