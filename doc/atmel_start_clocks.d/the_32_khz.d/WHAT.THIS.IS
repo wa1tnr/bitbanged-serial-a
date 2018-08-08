@@ -1,0 +1,8 @@
+Wed Aug  8 04:10:09 UTC 2018
+
+This is a 32 kHz crystal oscillator controlled TIMER_1 and TIMER_2
+clock configuration.
+
+It was set aside, as 32 kHz is not adequate for RS-232 (UART)
+communications (2 mHz is better for that).
+
