@@ -73,6 +73,7 @@ hal/src/hal_sleep.o \
 atmel_start.o \
 hpl/tc/hpl_tc.o \
 gpio_local.o \
+clock_init.o \
 main.o \
 hal/src/hal_atomic.o
 
@@ -105,6 +106,7 @@ OBJS_AS_ARGS +=  \
 "atmel_start.o" \
 "hpl/tc/hpl_tc.o" \
 "gpio_local.o" \
+"clock_init.o" \
 "main.o" \
 "hal/src/hal_atomic.o"
 
@@ -140,6 +142,7 @@ DEPS_AS_ARGS +=  \
 "hpl/tc/hpl_tc.d" \
 "hpl/oscctrl/hpl_oscctrl.d" \
 "gpio_local.d" \
+"clock_init.d" \
 "main.d" \
 "atmel_start.d"
 
