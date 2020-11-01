@@ -1,3 +1,17 @@
+Sun Nov  1 20:09:24 UTC 2020
+
+The purpose of using the TX pin, since this isn't a USART
+application, is so as to not have to change the wiring,
+when the USART is (later) utilized.
+
+The program is a stopgap for before that occurs.
+
+In this way, progress can be made, from a spartan
+system without extra libraries known (or on hand).
+
+USART use is considered a refinement difficult to
+attain, in this context.
+
 Sun Nov  1 19:37:07 GMT 2020
 
 Good solid program.  115,200 bps on TX_D1 PA17 ItsyBitsyM4.
