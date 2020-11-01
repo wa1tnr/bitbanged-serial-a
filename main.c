@@ -817,7 +817,7 @@ void blitwbits(unsigned int x) {
 }
 
 void print_mar(void) {
-    for (int j = 8; j>0; j--) { // send the text eight times
+    for (int j = 64; j>0; j--) { // send the text sixty four times
         send_crlf(); send_gapspace();
         for (uint8_t findix = 32; findix < 127; findix++) {
             blitwbits(findix);
@@ -867,19 +867,24 @@ void do_this(void) {
     send_crlf(); send_gapspace();
     for (int i=0; i<10; i++) {
         hold = 80 + i;
-        // do_that();
-        showbits(hold);
+        // do_that(); - not printing nice
+        showbits(hold); // this works okay
     }
 }
 // ###bookmark
 // ###bookmark
 
+void blink_timing(void) {
+    for (volatile int j=12433; j>0; j--) {
+        pip_space(); // delay 26 uSec
+    }
+}
 
 void blink(void) {
-    send_nothing();
+    blink_timing(); // send_nothing();
     led_stuph(); // toggle
-    send_nothing();
-    led_stuph(); // toggle
+    blink_timing();
+    led_stuph();
 }
 
 int main(void) {
@@ -903,9 +908,14 @@ int main(void) {
     }
 
     for (volatile int k=9932211; k>0; k--){
-        send_alpha(); send_gapp();
-        send_five(); send_gapp();
+        // send_alpha(); send_gapp();
+        send_five(); // use send_five() but no gapp when on the scope
+        // gapp is also ascii 32, space char, not just a timing.
     }
+
+// program was modified to use 'send_five()' in an
+// endless loop, during troubleshooting of timing
+// on the oscilloscope.
 
     for (int j=44444; j>0; j--){
         // send_skeleton(); // compiler warning
