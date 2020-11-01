@@ -141,7 +141,14 @@ void uSec(void) {
 // see a lot of QQQ with 137 #define SECU 137
 
 // SECU 141 is on the money for 38400 bps  09 Aug 23:15 UTC
-#define SECU 141
+
+// Nov 2020 probably best place to adjust timing, with
+// present poor understanding:
+// #define SECU 141
+
+// Nov 1 2020: 141 gives 40 uSec on Owon oscilloscope
+// #define SECU 141
+#define SECU 29
 
 void pip_space(void) {
 // 5 MHz / 200 ns is SECU 1000
@@ -878,8 +885,8 @@ int main(void) {
     SystemInit();
     pins_setup(); // D11 in OUTPUT mode
     blink(); blink(); blink(); blink(); blink(); blink();
-    ClockInit120();
-    setup_PA14_as_GCLK_IO();
+    // ClockInit120();
+    // setup_PA14_as_GCLK_IO();
     // omit:
     // SysTick_Config(4000);
 
@@ -890,6 +897,11 @@ int main(void) {
     do_this();
 
     for (volatile int k=21044; k>0; k--){
+    }
+
+    for (volatile int k=9932211; k>0; k--){
+        send_alpha(); send_gapp();
+        send_five(); send_gapp();
     }
 
     for (int j=44444; j>0; j--){
