@@ -120,7 +120,7 @@ void system_init(void)
 
 	gpio_set_pin_function(D11, GPIO_PIN_FUNCTION_OFF);
 
-	// GPIO on PA23
+	// GPIO on PA22
 
 	// Set pin direction to output
 	gpio_set_pin_direction(D13, GPIO_DIRECTION_OUT);
@@ -148,19 +148,19 @@ void system_init(void)
 
 	gpio_set_pin_function(PB03, GPIO_PIN_FUNCTION_OFF);
 
-	// GPIO on PB16
+	// GPIO on PA17
 
 	// Set pin direction to output
-	gpio_set_pin_direction(PB16, GPIO_DIRECTION_OUT);
+	gpio_set_pin_direction(PA17, GPIO_DIRECTION_OUT);
 
-	gpio_set_pin_level(PB16,
+	gpio_set_pin_level(PA17,
 	                   // <y> Initial level
 	                   // <id> pad_initial_level
 	                   // <false"> Low
 	                   // <true"> High
 	                   true);
 
-	gpio_set_pin_function(PB16, GPIO_PIN_FUNCTION_OFF);
+       gpio_set_pin_function(PA17, GPIO_PIN_FUNCTION_OFF);
 
 	// GPIO on PB17
 
