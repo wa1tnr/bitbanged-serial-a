@@ -7,6 +7,10 @@ Feather M4 assigns it as TX_D1 or SERCOM5.0
 
 Want same on ItsyBitsyM4, if mapped already. ;)
 
+Later: PA17 seems required for ItsyBitsyM4.  That is, its
+schematic says PA17 is mapped to TX_D1 per what was used
+for Feather M4.
+
 Sun Nov  1 12:54:41 UTC 2020
 
 GOOD NEWS!
