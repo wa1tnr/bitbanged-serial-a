@@ -1,3 +1,23 @@
+// Sun Nov  1 14:01:04 GMT 2020
+// modified: for ItsyBitsyM4 pin mapping PA17 (from PB16 on Feather M4 Express)
+// modified: PA23 becomes PA22 following mapping D13 from Feather M4 to ItsyM4
+// note: untested, juggling.  Verify everything. ;) -Nov 1 2020
+// note: all refs to a pin '17' in Forth equivalent code (comments only)
+//       got corrected to refer instead to D1 (just '1' in Forth).
+//       That's why all those 17's got rewritten as 1's. ;)
+//       Again, PB16 became PA17 so some 16's were rewritten to 1's,
+//       (PA17 is mapped to D1 on ItsyBitsyM4 - corrected very old errors
+//       that would translate into 'D17' or maybe 'D16' which was never
+//       correct for describing the TX pin. ;)
+//       in some contexts.  Should have updated in waves, but didn't.  Oops.
+
+// - - - - - - - -
+// - - - - - - - -
+// note: visually parsed in 'git diff' and saw good code changes - comments
+//       were not inspected as carefully.
+// - - - - - - - -
+// - - - - - - - -
+
 // Fri Aug 10 08:16:42 UTC 2018
 // Fri Aug 10 07:40:43 UTC 2018
 // Thu Aug  9 22:06:59 UTC 2018
@@ -19,9 +39,8 @@ int tick_h = -1;
 
 void pins_setup(void) {
     PORT->Group[0].DIRSET.reg  = (uint32_t)(1 << 21); // PA21 //  1 11 pinmode  // D11
-    PORT->Group[0].DIRSET.reg  = (uint32_t)(1 << 23); // PA23 //  1 13 pinmode  // D13
-    PORT->Group[1].DIRSET.reg  = (uint32_t)(1 << 16); // PB16 //  1 16 pinmode  // TX
-    // toggle: // PORT->Group[0].OUTTGL.reg = (uint32_t)(1 << 21); // PA21 // D11 toggle
+    PORT->Group[0].DIRSET.reg  = (uint32_t)(1 << 22); // PA22 //  1 13 pinmode  // D13
+    PORT->Group[0].DIRSET.reg  = (uint32_t)(1 << 17); // PA17 //  1  1 pinmode  // TX aka D1
 }
 
 void ClockInit120(void)
@@ -107,7 +126,7 @@ void setup_PA14_as_GCLK_IO(void) {
 
 void led_stuph(void) {
     if (tick_h > SCALED) {
-        PORT->Group[0].OUTTGL.reg = (uint32_t)(1 << 23); // PA23 // D13 toggle
+        PORT->Group[0].OUTTGL.reg = (uint32_t)(1 << 22); // PA22 // D13 toggle
         tick_h = -1;
     }
 }
@@ -170,9 +189,9 @@ void common_end(void) {
 
     // post-amble hi hi
 
-    PORT->Group[1].OUTCLR.reg = (uint32_t)(1 << 16); // PB16 //  0 16 pinwrite
+    PORT->Group[0].OUTCLR.reg = (uint32_t)(1 << 17); // PA17 //  0  1 pinwrite
     pip_space(); // delay 26 uSec
-    PORT->Group[1].OUTSET.reg |= (uint32_t)(1 << 16); // PB16 //  1 16 pinwrite
+    PORT->Group[0].OUTSET.reg |= (uint32_t)(1 << 17); // PA17 //  1  1 pinwrite
     // now a very wide space
     pip_space(); // delay 26 uSec
     send_vy_nothing(); // // time gap
@@ -180,11 +199,11 @@ void common_end(void) {
 }
 
 void bit_CLR(void) { // send the bit cleared - ground the GPIO pin
-    PORT->Group[1].OUTCLR.reg = (uint32_t)(1 << 16); // PB16 //  0 16 pinwrite
+    PORT->Group[0].OUTCLR.reg = (uint32_t)(1 << 17); // PA17 //  0  1 pinwrite
     pip_space(); // delay 26 uSec
 }
 void bit_SET(void) { // send the bit set - raise the GPIO pin to 3.3 VDC
-    PORT->Group[1].OUTSET.reg |= (uint32_t)(1 << 16); // PB16 //  1 16 pinwrite
+    PORT->Group[0].OUTSET.reg |= (uint32_t)(1 << 17); // PA17 //  1  1 pinwrite
     pip_space(); // delay 26 uSec
 }
 
@@ -626,7 +645,7 @@ void send_at_symb(void) { // send at symbol circle a
     send_nothing(); // guard time
     pip_space(); // delay 26 uSec
 
-    PORT->Group[1].OUTCLR.reg = (uint32_t)(1 << 16); // PB16 //  0 16 pinwrite
+    PORT->Group[0].OUTCLR.reg = (uint32_t)(1 << 17); // PA17 //  0  1 pinwrite
     pip_space(); // delay 26 uSec
 
 
@@ -635,7 +654,7 @@ void send_at_symb(void) { // send at symbol circle a
 
 
     // send 2^0 bit:
-    PORT->Group[1].OUTCLR.reg = (uint32_t)(1 << 16); // PB16, clr
+    PORT->Group[0].OUTCLR.reg = (uint32_t)(1 << 17); // PA17, clr
     pip_space(); // delay 26 uSec
 
     // send 2^1 bit:
@@ -654,7 +673,7 @@ void send_at_symb(void) { // send at symbol circle a
     pip_space(); // delay 26 uSec
 
     // send 2^6 bit:
-    PORT->Group[1].OUTSET.reg |= (uint32_t)(1 << 16); // PB16 //  1 16 pinwrite
+    PORT->Group[0].OUTSET.reg |= (uint32_t)(1 << 17); // PA17 //  1  1 pinwrite
     pip_space(); // delay 26 uSec
 
     // post-amble hi hi
@@ -670,9 +689,8 @@ void send_quebec(void) { // send upper case Q
     send_nothing(); // guard time
 
     pip_space(); // delay 26 uSec
-    // PORT->Group[0].OUTTGL.reg = (uint32_t)(1 << 16); // PA16 // D11 toggle
 
-    PORT->Group[1].OUTCLR.reg = (uint32_t)(1 << 16); // PB16 //  0 16 pinwrite
+    PORT->Group[0].OUTCLR.reg = (uint32_t)(1 << 17); // PA17 //  0  1 pinwrite
     pip_space(); // delay 26 uSec
 
 
@@ -681,13 +699,13 @@ void send_quebec(void) { // send upper case Q
 
 
     // send 2^0 bit:
-    PORT->Group[1].OUTSET.reg |= (uint32_t)(1 << 16); // PB16 //  1 16 pinwrite
+    PORT->Group[0].OUTSET.reg |= (uint32_t)(1 << 17); // PA17 //  1  1 pinwrite
     pip_space(); // delay 26 uSec
 
 
 
     // send 2^1 bit:
-    PORT->Group[1].OUTCLR.reg = (uint32_t)(1 << 16); // PB16, clr
+    PORT->Group[0].OUTCLR.reg = (uint32_t)(1 << 17); // PA17, clr
     pip_space(); // delay 26 uSec
 
     // send 2^2 bit:
@@ -697,19 +715,17 @@ void send_quebec(void) { // send upper case Q
     pip_space(); // delay 26 uSec
 
     // send 2^4 bit:
-    PORT->Group[1].OUTSET.reg |= (uint32_t)(1 << 16); // PB16 //  1 16 pinwrite
+    PORT->Group[0].OUTSET.reg |= (uint32_t)(1 << 17); // PA17 //  1  1 pinwrite
     pip_space(); // delay 26 uSec
 
     // send 2^5 bit:
-    // PORT->Group[1].OUTSET.reg |= (uint32_t)(1 << 16); // PB16 //  1 16 pinwrite
-
-    PORT->Group[1].OUTCLR.reg = (uint32_t)(1 << 16); // PB16 //  0 16 pinwrite
-    // PORT->Group[1].OUTCLR.reg = (uint32_t)(1 << 16); // PB16 //  0 16 pinwrite
+    // Nov 2020 - finger flubbed here - watch for an error
+    PORT->Group[0].OUTCLR.reg = (uint32_t)(1 << 17); // PA17 //  0  1 pinwrite
     pip_space(); // delay 26 uSec
 
     // send 2^6 bit:
 
-    PORT->Group[1].OUTSET.reg |= (uint32_t)(1 << 16); // PB16 //  1 16 pinwrite
+    PORT->Group[0].OUTSET.reg |= (uint32_t)(1 << 17); // PA17 //  1  1 pinwrite
     pip_space(); // delay 26 uSec
 
     // post-amble hi hi
