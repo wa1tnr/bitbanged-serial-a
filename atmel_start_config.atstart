@@ -930,11 +930,11 @@ pads:
     mode: Digital output
     user_label: D9
     configuration: null
-  PB16:
-    name: PB16
-    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PB16
+  PA17:
+    name: PA17
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51G19A-AF::pad::PA17
     mode: Digital output
-    user_label: PB16
+    user_label: PA17
     configuration:
       pad_initial_level: High
   PB17:
@@ -952,8 +952,8 @@ pads:
     configuration:
       pad_initial_level: High
   D13:
-    name: PA23
-    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51J19A-AF::pad::PA23
+    name: PA22
+    definition: Atmel:SAMD51_Drivers:0.0.1::SAMD51G19A-AF::pad::PA22
     mode: Digital output
     user_label: D13
     configuration: null
