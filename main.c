@@ -125,10 +125,10 @@ void setup_PA14_as_GCLK_IO(void) {
 
 
 void led_stuph(void) {
-    if (tick_h > SCALED) {
+    // if (tick_h > SCALED) {
         PORT->Group[0].OUTTGL.reg = (uint32_t)(1 << 22); // PA22 // D13 toggle
-        tick_h = -1;
-    }
+    //  tick_h = -1;
+    // }
 }
 
 
@@ -865,12 +865,19 @@ void do_this(void) {
 // ###bookmark
 
 
+void blink(void) {
+    send_nothing();
+    led_stuph(); // toggle
+    send_nothing();
+    led_stuph(); // toggle
+}
+
 int main(void) {
     // Nice triple, 8 MHZ:
     SystemCoreClockUpdate();
     SystemInit();
     pins_setup(); // D11 in OUTPUT mode
-
+    blink(); blink(); blink(); blink(); blink(); blink();
     ClockInit120();
     setup_PA14_as_GCLK_IO();
     // omit:
