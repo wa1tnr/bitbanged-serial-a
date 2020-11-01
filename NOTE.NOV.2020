@@ -1,3 +1,13 @@
-Sun Nov  1 12:27:49 UTC 2020
+Sun Nov  1 12:30:10 UTC 2020
 
 Entirely untested - old code.  May compile, or not. ;)
+
+Old commit may be a good description of this project,
+or not, as follows:
+
+    Working TX pin serial annunciator (talks to PiUART 38400 bps)
+     modified:   main.c
+    On branch clockey-amrt-aa-8_AUG-e-
+    
+    For soft front panels and the like
+
