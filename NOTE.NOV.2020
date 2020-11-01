@@ -1,3 +1,24 @@
+Sun Nov  1 19:37:07 GMT 2020
+
+Good solid program.  115,200 bps on TX_D1 PA17 ItsyBitsyM4.
+
+Program goal: write data from a primitive program, via
+TTL serial, to capture the state of the machine in an
+external venue (a tty - a serial terminal).
+
+Program goal is met.  Rediscovered older work, and ported
+to ItsyBitsyM4 (was originally a Feather M4 design).
+
+This new branch, itsybitsym4-b was instantiated after the
+release was posted.
+
+New development goes in this branch (itsybitsym4-b) during
+or after November 2020.
+
+
+TODO: post the old scope trace photo.
+
+
 Sun Nov  1 13:32z
 
 PB16 probably the only pin used at the moment, for
