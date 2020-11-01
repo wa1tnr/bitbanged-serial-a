@@ -148,7 +148,10 @@ void uSec(void) {
 
 // Nov 1 2020: 141 gives 40 uSec on Owon oscilloscope
 // #define SECU 141
-#define SECU 29
+// really satisfying when it comes in - 26 works at 115200.
+
+// HAVE SERIAL OUTPUT for ATSAMD51G19A ItsyBitsyM4 - nice.  01 NOV 2020 @17:50 UTC
+#define SECU 26
 
 void pip_space(void) {
 // 5 MHz / 200 ns is SECU 1000
