@@ -1,0 +1,10 @@
+img_2018_0805_0327-ce9b.jpg
+
+Image of an oscilloscope trace. Image created during the project,
+and depicts a favorable keystroke character on the oscilloscope.
+
+It's favorable because of its regular pattern (many characters
+that can be sent exhibit no such regularity; the chosen pattern
+was found to be one of the most regular patterns available).
+
+Might have been capital 'U' (as in 'Uniform').
